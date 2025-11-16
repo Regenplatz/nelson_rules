@@ -316,8 +316,8 @@ def test_rule7_out_of_control() -> None:
     :return: Not applicable
     """
     arr_input_rule7 = np.array([
-        3.40, 2.90, 3.10, -2.40, -2.66, -2.50, 3.10, -2.60, 3.20, -2.60,
-        3.10, 2.50, 2.90, 3.10, 3.20, -3.90, -2.88, -4.30, -3.90, 3.90])
+        7.40, 6.90, 7.10, 2.40, 2.66, 2.50, 7.10, 2.60, 7.20, 2.60,
+        7.10, 6.50, 6.90, 7.10, 7.20, 1.90, 2.88, 0.30, 1.90, 7.90])
     tr = TrendingRules(arr_input_rule7)
     tr.rule7()
     arr_expected_result_rule7 = np.array([
