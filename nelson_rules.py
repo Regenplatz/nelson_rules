@@ -4,12 +4,24 @@ __version__ = "1.0.0"
 
 import numpy as np
 import pandas as pd
-from typing import Dict
+from typing import Dict, Union
 
 
-class TrendingRules:
+d_rules = {
+    "rule1": {"f_std": 3.0},
+    "rule2": {"i_points": 9},
+    "rule3": {"i_points": 6},
+    "rule4": {"i_points": 14},
+    "rule5": {"i_points": 3, "i_points_window": 2, "f_std": 2.0},
+    "rule6": {"i_points": 5, "i_points_window": 4, "f_std": 1.0},
+    "rule7": {"i_points": 15, "f_std": 1.0},
+    "rule8": {"i_points": 8, "f_std": 1.0},
+}
 
-    def __init__(self, arr: np.ndarray) -> None:
+
+class NelsonRules:
+
+    def __init__(self, arr: np.ndarray, d_rule_settings: Dict[str, Dict[str, Union[float, int]]] = d_rules) -> None:
 
         if isinstance(arr, np.ndarray):
             self.arr: np.ndarray = arr
@@ -29,7 +41,11 @@ class TrendingRules:
         self.arr_length: int = self.arr.shape[0]
         self.f_mean = np.mean(self.arr)
         self.f_std = np.std(self.arr)
-        self.d_results = {"input": self.arr}
+        self.d_results = {"input_data": self.arr}
+
+        self.d_rules = d_rules
+        if (self.d_rules != d_rule_settings) and (len(d_rule_settings) != 0):
+            self.d_rules.update(d_rule_settings)
 
 
     def _check_if_point_outof_std(self, x, f_std_value: float) -> np.array:
@@ -136,7 +152,6 @@ class TrendingRules:
         :param f_std_value: float, number of standard deviations, e.g. 3.0 for 3 std
         :return: array containing classification info.
         """
-        ## apply rule 01
         vfunc = np.vectorize(self._check_if_point_outof_std, excluded=["f_std_value"])
         arr_result = vfunc(self.arr, f_std_value)
         self.d_results["rule1"] = arr_result
@@ -246,7 +261,6 @@ class TrendingRules:
         :param f_std_value: float, number of standard deviations, e.g. 2 for 2 std
         :return: array containing classification info.
         """
-        ## apply rule 07
         arr_directions = self._check_direction_comparedTo_mean()
         vfunc = np.vectorize(self._check_if_point_outof_std, excluded=["f_std_value"])
         arr_outof_std = vfunc(self.arr, f_std_value)
@@ -293,13 +307,19 @@ class TrendingRules:
         self.d_results["zscore"] = arr_result
 
         ## apply rules
-        self.rule1()
-        self.rule2()
-        self.rule3()
-        self.rule4()
-        self.rule5()
-        self.rule6()
-        self.rule7()
-        self.rule8()
+        self.rule1(f_std_value=self.d_rules["rule1"]["f_std"])
+        self.rule2(i_points=self.d_rules["rule2"]["i_points"])
+        self.rule3(i_points=self.d_rules["rule3"]["i_points"])
+        self.rule4(i_points=self.d_rules["rule4"]["i_points"])
+        self.rule5(i_points_out=self.d_rules["rule5"]["i_points"],
+                   i_points_window=self.d_rules["rule5"]["i_points_window"],
+                   f_std_value=self.d_rules["rule5"]["f_std"])
+        self.rule6(i_points_out=self.d_rules["rule6"]["i_points"],
+                   i_points_window=self.d_rules["rule6"]["i_points_window"],
+                   f_std_value=self.d_rules["rule6"]["f_std"])
+        self.rule7(i_points=self.d_rules["rule7"]["i_points"],
+                   f_std_value=self.d_rules["rule7"]["f_std"])
+        self.rule8(i_points=self.d_rules["rule8"]["i_points"],
+                   f_std_value=self.d_rules["rule8"]["f_std"])
 
         return self.d_results
