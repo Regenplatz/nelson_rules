@@ -1,6 +1,36 @@
 # nelson_rules
 
+<a href=https://img.shields.io/badge/python-3.12-blue>
+    <img src=https://img.shields.io/badge/python-3.12-blue?logo=python alt="Python 3.12">
+</a>
 
+<a href=https://img.shields.io/badge/NumPy-green>
+    <img src=https://img.shields.io/badge/NumPy-blue?logo=NumPy alt="Python 3.12">
+</a>
+
+
+
+
+<br>
+<br>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#about-the-package">About the package</a></li>   
+    <li><a href="#how-to-install">How to install</a></li>
+    <li><a href="#how-to-run-with-default-settings">How to run with default settings</a></li>
+    <li><a href="#how-to-run-with-other-settings">How to run with other settings</a></li>    
+    <li><a href="#how-to-access-results">How to access results</a></li>
+  </ol>
+</details>
+
+<br>
+
+
+<!-- ABOUT THE PROJECT -->
 ## Background
 
 The 8 Nelson rules can be used in **process control** to detect **potential 
@@ -9,15 +39,12 @@ anomalies** during production. Those rules were defined by
 in the 1980s. The rules and their exemplary visualizations are also available on 
 [wikipedia][wikipedia-url].
 
+<br>
 
 ## About the package
 
-The package was built with <a href=https://numpy.org>
-    <img src=https://numpy.org/images/logo.svg alt="NumPy" width="50">
-</a> Numpy
-and tested with <a href=https://docs.pytest.org/en>
-    <img src=https://docs.pytest.org/en/stable/_static/pytest1.png alt="pytest" width="50">
-</a>
+The package was built with [Numpy](https://numpy.org/) and tested with 
+[pytest](https://docs.pytest.org/en/stable/).
 
 By the use of this package, your data is checked for all 8 rules. 
 As input data, a 1D NumPy Array is preferred, but a list of numeric values is
@@ -28,10 +55,12 @@ well as *zscores*.
 Results on Nelson rules are available as binary (0, 1) 1D arrays. 
 Zscores are available as float values.
 
+<br>
 
 ## How to install
 TODO
 
+<br>
 
 ## How to run with default settings
 
@@ -65,6 +94,7 @@ like to get the results in a [pandas][pandas-url] DataFrame, run:
 df = pd.DataFrame(data=d_results)
 ```
 
+<br>
 
 ## How to run with other settings
 
@@ -75,6 +105,7 @@ tr = NelsonRules(<your_data_in_1D_numpy_array>, d_rule_settings)
 d_results = tr.apply_rules(d_rules)
 ```
 
+<br>
 
 ## How to access results
 
