@@ -1,6 +1,6 @@
 [project]
 name = "nelson-rules"
-version = "0.3.3"
+version = "0.1.0"
 authors = [
     {name="Regenplatz", email="nelson@regenplatz.de"}
 ]
