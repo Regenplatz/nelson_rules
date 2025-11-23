@@ -4,8 +4,7 @@ __version__ = "1.0.0"
 
 import numpy as np
 import pandas as pd
-from nelson_rules import NelsonRules
-import pytest
+from src.nelson_rules.nelson_rules import NelsonRules
 
 
 ##### INPUT DATA #################################################################
