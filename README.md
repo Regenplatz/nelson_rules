@@ -1,18 +1,19 @@
 # nelson_rules
 
-<a href=https://img.shields.io/badge/python-3.12-blue>
-    <img src=https://img.shields.io/badge/python-3.12-blue?logo=python alt="Python 3.12">
+<a href=https://www.python.org/>
+    <img src=https://img.shields.io/badge/python-3.12-FFDC50?logo=python&logoColor=FFDC50 alt="Python 3.12">
 </a>
-
-<a href=https://img.shields.io/badge/NumPy-green>
-    <img src=https://img.shields.io/badge/NumPy-blue?logo=NumPy alt="Python 3.12">
+<a href=https://numpy.org/>
+    <img src=https://img.shields.io/badge/NumPy-grey?logo=NumPy alt="NumPy">
 </a>
-
-
-
+<a href=https://docs.pytest.org/en/stable/>
+    <img src=https://img.shields.io/badge/pytest-grey?logo=pytest&logoColor=C7D302 alt="pytest">
+</a>
 
 <br>
 <br>
+
+<a id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -20,10 +21,12 @@
   <ol>
     <li><a href="#background">Background</a></li>
     <li><a href="#about-the-package">About the package</a></li>   
-    <li><a href="#how-to-install">How to install</a></li>
+    <li><a href="#how-to-install">How to install</a></li> 
+    <li><a href="#how-to-import">How to import</a></li>
     <li><a href="#how-to-run-with-default-settings">How to run with default settings</a></li>
     <li><a href="#how-to-run-with-other-settings">How to run with other settings</a></li>    
-    <li><a href="#how-to-access-results">How to access results</a></li>
+    <li><a href="#how-to-access-results">How to access results</a></li>    
+    <li><a href="#how-to-access-further-information">How to access further information</a></li>
   </ol>
 </details>
 
@@ -34,17 +37,16 @@
 ## Background
 
 The 8 Nelson rules can be used in **process control** to detect **potential 
-anomalies** during production. Those rules were defined by 
-[Lloyd S. Nelson][L.S. Nelson, Journal of Quality Technology, 16, 4, 1984] 
-in the 1980s. The rules and their exemplary visualizations are also available on 
+anomalies** during production. Those rules were defined by [Lloyd S. Nelson] in the 
+1980s. The rules and their exemplary visualizations are available on 
 [wikipedia][wikipedia-url].
 
-<br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## About the package
 
-The package was built with [Numpy](https://numpy.org/) and tested with 
-[pytest](https://docs.pytest.org/en/stable/).
+The package was built with [Numpy][NumPy-url] and tested with [pytest][pytest-url].
 
 By the use of this package, your data is checked for all 8 rules. 
 As input data, a 1D NumPy Array is preferred, but a list of numeric values is
@@ -52,15 +54,28 @@ also possible. As result, a dictionary is provided, that contains numpy arrays
 as values for each rule. It furthermore contains the *input data*, as
 well as *zscores*.
 
-Results on Nelson rules are available as binary (0, 1) 1D arrays. 
-Zscores are available as float values.
+Results on Nelson rules are available as 1D arrays with binary values 
+(0, 1). Those results could e.g. be displayed in visuals with potential anomalies (1) 
+being colored in red.
 
-<br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## How to install
-TODO
+```
+pip install nelson-rules
+```
 
-<br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## How to import
+```
+from nelson_rules import NelsonRules
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## How to run with default settings
 
@@ -84,28 +99,24 @@ To check for data points following Nelson rules, the *rule setting
 dictionary* is not needed as a parameter, because it is already set as 
 default. Therefore, simply run the following on your data: 
 ```
-tr = NelsonRules(<your_data_in_1D_numpy_array>)
-d_results = tr.apply_rules(d_rules)
+nr = NelsonRules(<your_data_in_1D_numpy_array>)
+d_results = nr.apply_rules()
 ```
 
-The program is set up with [NumPy][NumPy-url]. However, if you'd 
-like to get the results in a [pandas][pandas-url] DataFrame, run:
-```
-df = pd.DataFrame(data=d_results)
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<br>
 
 ## How to run with other settings
 
 In case you'd like to run the code with other settings, adapt 
-*d_rule_settings* and run:
+*d_rule_settings* to your needs and run:
 ```
-tr = NelsonRules(<your_data_in_1D_numpy_array>, d_rule_settings)
-d_results = tr.apply_rules(d_rules)
+nr = NelsonRules(<your_data_in_1D_numpy_array>, d_rule_settings)
+d_results = nr.apply_rules(d_rules)
 ```
 
-<br>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## How to access results
 
@@ -133,13 +144,50 @@ d_results["rule4"]
 ```
 For rules 5 and 6, *points* and *windows* are available. By this, you could
 visualize both: the n data points out of m points (window) that fulfill 
-the rule.
+the rule. You can access this data as follows:
+```
+d_results["rule5_points"]
+d_results["rule5_windows"]
+```
+
+The program is set up with [NumPy][NumPy-url]. However, if you'd 
+like to get the results in a [pandas][pandas-url] DataFrame, run:
+```
+df = pd.DataFrame(data=d_results)
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## How to access further information
+
+*Zscores* are available as numpy array and can be accessed as follows:
+```
+d_results["zscore"]
+```
+
+*Mean* and x *standard deviations* are available as single values each. 
+They can be accessed as follows:
+```
+## mean
+nr_mean = nr.f_mean
+
+## 1 standard deviation
+nr_1std = nr.f_std
+
+## 2 standard deviations
+nr_2std = 2 * nr.f_std
+
+## 3 standard deviations
+nr_3std = 3 * nr.f_std
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[L.S. Nelson, Journal of Quality Technology, 16, 4, 1984]: https://www.tandfonline.com/doi/abs/10.1080/00224065.1984.11978921
 [wikipedia-url]: https://en.wikipedia.org/wiki/Nelson_rules
 [NumPy-logo]: https://numpy.org/images/logo.svg
 [NumPy-url]: https://numpy.org/
