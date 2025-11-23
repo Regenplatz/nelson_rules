@@ -37,8 +37,8 @@
 ## Background
 
 The 8 Nelson rules can be used in **process control** to detect **potential 
-anomalies** during production. Those rules were defined by [Lloyd S. Nelson] in the 
-1980s. The rules and their exemplary visualizations are available on 
+anomalies** during production. Those rules were defined by Lloyd S. Nelson 
+in the 1980s. The rules and their exemplary visualizations are available on 
 [wikipedia][wikipedia-url].
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -51,10 +51,10 @@ The package was built with [Numpy][NumPy-url] and tested with [pytest][pytest-ur
 By the use of this package, your data is checked for all 8 rules. 
 As input data, a 1D NumPy Array is preferred, but a list of numeric values is
 also possible. As result, a dictionary is provided, that contains numpy arrays
-as values for each rule. It furthermore contains the *input data*, as
-well as *zscores*.
+as values for each rule. It furthermore contains the *input data* and the 
+evaluated *zscores*.
 
-Results on Nelson rules are available as 1D arrays with binary values 
+Results on each Nelson rule are available as 1D arrays with binary values 
 (0, 1). Those results could e.g. be displayed in visuals with potential anomalies (1) 
 being colored in red.
 
@@ -112,7 +112,7 @@ In case you'd like to run the code with other settings, adapt
 *d_rule_settings* to your needs and run:
 ```
 nr = NelsonRules(<your_data_in_1D_numpy_array>, d_rule_settings)
-d_results = nr.apply_rules(d_rules)
+d_results = nr.apply_rules()
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
