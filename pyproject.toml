@@ -1,10 +1,22 @@
 [project]
 name = "nelson-rules"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.3.3"
+authors = [
+    {name="Regenplatz", email="nelson@regenplatz.de"}
+]
+description = "Apply Nelson rules"
 readme = "README.md"
 requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3"
+]
 dependencies = [
     "pandas>=2.3.3",
     "pytest>=9.0.1",
+    "twine>=6.2.0",
 ]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/Regenplatz/nelson_rules"
