@@ -1,6 +1,6 @@
 [project]
 name = "nelson-rules"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     {name="Regenplatz", email="nelson@regenplatz.de"}
 ]
@@ -12,7 +12,6 @@ classifiers = [
 ]
 dependencies = [
     "pandas>=2.3.3",
-    "pytest>=9.0.1",
     "twine>=6.2.0",
 ]
 license = "MIT"
