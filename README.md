@@ -6,10 +6,6 @@
 <a href=https://numpy.org/>
     <img src=https://img.shields.io/badge/NumPy-grey?logo=NumPy alt="NumPy">
 </a>
-<a href=https://docs.pytest.org/en/stable/>
-    <img src=https://img.shields.io/badge/pytest-grey?logo=pytest&logoColor=C7D302 alt="pytest">
-</a>
-
 <br>
 <br>
 
@@ -20,7 +16,8 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#background">Background</a></li>
-    <li><a href="#about-the-package">About the package</a></li>   
+    <li><a href="#about-the-package">About the package</a></li>  
+    <li><a href="#prerequisit">Prerequisit</a></li>    
     <li><a href="#how-to-install">How to install</a></li> 
     <li><a href="#how-to-import">How to import</a></li>
     <li><a href="#how-to-run-with-default-settings">How to run with default settings</a></li>
@@ -57,6 +54,12 @@ evaluated *zscores*.
 Results on each Nelson rule are available as 1D arrays with binary values 
 (0, 1). Those results could e.g. be displayed in visuals with potential anomalies (1) 
 being colored in red.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Prerequisit
+The input data must be sorted by time - before it is processed by this package.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
