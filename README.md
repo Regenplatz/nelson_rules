@@ -1,13 +1,9 @@
 # nelson_rules
 
-<a href=https://www.python.org/>
-    <img src=https://img.shields.io/badge/python-3.12-FFDC50?logo=python&logoColor=FFDC50 alt="Python 3.12">
-</a>
-<a href=https://numpy.org/>
-    <img src=https://img.shields.io/badge/NumPy-grey?logo=NumPy alt="NumPy">
-</a>
-<br>
-<br>
+[![Python][python-shield]][python-url]
+[![NumPy][numpy-shield]][numpy-url]
+
+
 
 <a id="readme-top"></a>
 
@@ -191,9 +187,12 @@ nr_3std = 3 * nr.f_std
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[python-shield]: https://img.shields.io/badge/python-3.12-FFDC50?logo=python&logoColor=FFDC50
+[python-url]: https://www.python.org/
+[numpy-shield]: https://img.shields.io/badge/NumPy-grey?logo=NumPy
+[numpy-url]: https://numpy.org/
 [wikipedia-url]: https://en.wikipedia.org/wiki/Nelson_rules
-[NumPy-logo]: https://numpy.org/images/logo.svg
-[NumPy-url]: https://numpy.org/
 [pytest-logo]: https://docs.pytest.org/en/stable/_static/pytest1.png
 [pytest-url]: https://docs.pytest.org/en
 [pandas-url]: https://pandas.pydata.org/
+
